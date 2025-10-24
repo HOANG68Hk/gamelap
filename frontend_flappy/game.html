@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flappy Bird Việt Nam 🐦</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🐥 Flappy Bird 🐥</h1>
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+
+  <div class="buttons">
+    <button id="restartBtn">🔁 Chơi lại</button>
+    <button id="leaderboardBtn">🏆 Bảng xếp hạng</button>
+  </div>
+
+  <!-- ⚙️ Nút cài đặt -->
+  <button id="settingsBtn">⚙️</button>
+
+  <!-- Popup menu cài đặt -->
+  <div id="settingsMenu" class="hidden">
+    <h3>⚙️ Cài đặt</h3>
+    <button class="menu-item" id="homeBtn">🏠 Trang chủ</button>
+    <button class="menu-item" id="backBtn">↩️ Quay lại</button>
+    <button class="menu-item" id="resetBtn">🔄 Chơi lại</button>
+    <button class="menu-item" id="menuLeaderboardBtn">🏆 Bảng xếp hạng</button>
+    <button class="menu-item close" id="closeSettings">Đóng</button>
+  </div>
+
+  <!-- Bảng xếp hạng -->
+  <div id="leaderboard" class="hidden">
+    <h2>🏅 Bảng xếp hạng 🏅</h2>
+    <ul id="leaderboardList"><li>Đang tải...</li></ul>
+    <button id="closeLeaderboard">Đóng</button>
+  </div>
+
+  <!-- 💀 Màn hình Game Over -->
+  <div id="gameOverScreen" class="hidden">
+    <h1>💀 GAME OVER 💀</h1>
+    <p id="finalScore">Điểm: 0</p>
+    <button id="restartBtnOver">🔁 Chơi lại</button>
+  </div>
+
+  <script src="game.js"></script>
+
+  <script>
+    // ---------- MENU CÀI ĐẶT ----------
+    const settingsBtn = document.getElementById("settingsBtn");
+    const settingsMenu = document.getElementById("settingsMenu");
+    const closeSettings = document.getElementById("closeSettings");
+
+    settingsBtn.addEventListener("click", () => {
+      settingsMenu.classList.toggle("hidden");
+    });
+
+    closeSettings.addEventListener("click", () => {
+      settingsMenu.classList.add("hidden");
+    });
+
+    // ---------- NÚT CÀI ĐẶT ----------
+    document.getElementById("homeBtn").addEventListener("click", () => {
+      // về trang chủ
+      window.location.href = "index.html";
+    });
+
+    document.getElementById("backBtn").addEventListener("click", () => {
+      settingsMenu.classList.add("hidden");
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      settingsMenu.classList.add("hidden");
+      // gọi lại nút chơi lại
+      if (typeof resetGame === "function") resetGame();
+    });
+
+    // ---------- BẢNG XẾP HẠNG ----------
+    const leaderboard = document.getElementById("leaderboard");
+    document.getElementById("leaderboardBtn").addEventListener("click", () => {
+      leaderboard.classList.remove("hidden");
+    });
+    document.getElementById("closeLeaderboard").addEventListener("click", () => {
+      leaderboard.classList.add("hidden");
+    });
+
+    // ---------- GAME OVER ----------
+    document.getElementById("restartBtnOver").addEventListener("click", () => {
+      document.getElementById("gameOverScreen").classList.add("hidden");
+      if (typeof resetGame === "function") resetGame();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trang chủ</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    margin:0; height:100vh;
+    display:flex; justify-content:center; align-items:center;
+    flex-direction:column;
+    background:linear-gradient(#6fd6d8,#0f4f56);
+    font-family:sans-serif;
+    overflow:hidden;
+  }
+  .bird {
+    width:120px; height:120px;
+    animation:fly 1s infinite ease-in-out;
+  }
+  @keyframes fly {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  .start-btn {
+    margin-top:30px;
+    background:#ffb300;
+    border:none;
+    border-radius:12px;
+    font-size:22px;
+    padding:15px 50px;
+    color:#fff;
+    cursor:pointer;
+    box-shadow:0 4px 8px rgba(0,0,0,0.3);
+    transition:0.3s;
+  }
+  .start-btn:hover {
+    background:#ff9100;
+    transform:scale(1.05);
+  }
+</style>
+</head>
+<body>
+  <h1>🐥 TRANG CHỦ 🐥</h1>
+  <img src="assets/bird.png" alt="Bird" class="bird">
+  <button class="start-btn" onclick="startGame()">Bắt đầu</button>
+
+  <script>
+    function startGame() {
+      // chuyển sang trang game
+      window.location.href = "game.html";
+    }
+  </script>
+</body>
+</html>
